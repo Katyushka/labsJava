@@ -1,5 +1,7 @@
 package main.collections.map;
 
+import org.apache.commons.lang3.builder.*;
+
 import java.util.Objects;
 
 /**
@@ -31,20 +33,24 @@ public class Song {
     }
 
     @Override
-    public boolean equals(Object object){
-        Song song = (Song)object;
-        if (this.getName().equals(song.getName()) && this.getSinger().equals(song.getSinger()))
-        return true;
-        return false;
+    public boolean equals(Object object) {
+        if (object == this) return true;
+        if (!(object instanceof Song)) {
+            return false;
+        }
+        Song song = (Song) object;
+        return new EqualsBuilder()
+                .append(name, song.name)
+                .append(singer, song.singer)
+                .isEquals();
     }
 
     @Override
-    public int hashCode()
-    {
-        final int PRIME = 31;
-        int result = 1;
-        result = PRIME * result + this.getSinger().hashCode()+this.getName().hashCode();
-        return result;
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(name)
+                .append(singer)
+                .toHashCode();
     }
 
 }
