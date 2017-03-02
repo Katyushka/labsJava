@@ -4,7 +4,6 @@
 •	Добавлять и удалять песни.
 •	Просматривать содержимое целого каталога и каждого диска в отдельности.
 Осуществлять поиск всех записей заданного исполнителя по всему каталогу
-
  */
 
 package main.collections.map;
@@ -108,16 +107,16 @@ public class MapTask implements Runnable {
         // предполагается что одинаковые песни могут быть в разных дисках?
         System.out.print("Enter disk name: ");
         String diskName = nstr();
-        if (catalog.containsKey(diskName))
-            catalog.get(diskName).forEach(song1 -> {
-                if (song1.equals(song)) catalog.get(diskName).remove(song1);
-            });
-        else
+        if (catalog.containsKey(diskName)) {
+            catalog.get(diskName).removeIf(song1 ->
+                    Objects.equals(song1, song)
+            );
+        } else {
             System.out.println("Entered disk does not exist in catalog!");
+        }
         if (searchMap.containsKey(song.getSinger())) {
-            searchMap.get(song.getSinger()).forEach(song1 -> {
-                if (song1.equals(song)) searchMap.get(song.getSinger()).remove(song1);
-            });
+            searchMap.get(song.getSinger()).removeIf(song1 ->
+                    Objects.equals(song1, song.getName()));
         }
     }
 
@@ -134,8 +133,9 @@ public class MapTask implements Runnable {
         if (catalog.containsKey(disk)) {
             HashSet<Song> songs = catalog.get(disk);
             printSongs(songs);
-        } else
+        } else {
             System.out.println("Entered disk does not exist in catalog!");
+        }
     }
 
     private void printSongs(HashSet<Song> songs) {
@@ -147,9 +147,11 @@ public class MapTask implements Runnable {
     private void searchRecords(HashMap<String, HashSet<String>> searchMap) {
         System.out.print("Enter singer: ");
         String singer = nstr();
-        if (searchMap.containsKey(singer))
+        if (searchMap.containsKey(singer)) {
             searchMap.get(singer).forEach(System.out::println);
-        else System.out.println("Entered singer does not exist in catalog!");
+        } else {
+            System.out.println("Entered singer does not exist in catalog!");
+        }
     }
 
 
