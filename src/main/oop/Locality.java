@@ -1,9 +1,11 @@
 package main.oop;
 
+import java.util.Comparator;
+
 /**
  * Created by ekaterina on 15.02.2017.
  */
-public class Locality {
+public class Locality implements Comparable{
     private int population;
     private double area;
     private double density;
@@ -55,5 +57,16 @@ public class Locality {
 
     public void setDensity(double density) {
         this.density = density;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Locality locality = (Locality)o;
+        if (this.population < locality.population){
+            return -1;
+        } else if (this.population > locality.population){
+            return 1;
+        }
+        return 0;
     }
 }
