@@ -1,6 +1,8 @@
-package osu.java.oop.lab4.collections.map;
+package osu.oop.lab4.collections.map;
 
-import org.apache.commons.lang3.builder.*;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Created by ekaterina on 01.03.2017.

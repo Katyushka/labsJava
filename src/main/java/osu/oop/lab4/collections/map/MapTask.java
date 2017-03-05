@@ -6,7 +6,7 @@
 Осуществлять поиск всех записей заданного исполнителя по всему каталогу
  */
 
-package osu.java.oop.lab4.collections.map;
+package osu.oop.lab4.collections.map;
 
 import java.io.*;
 import java.util.*;

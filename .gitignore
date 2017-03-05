@@ -9,3 +9,4 @@ generated-sources/
 *.orig
 exploded/
 index/
+output.txt

@@ -1,27 +1,25 @@
 /*
-4.	На основе данных входного файла составить автомобильную ведомость, включив следующие данные: марка автомобиля,
-номер автомобиля, фамилия его владельца,  год приобретения, пробег. Вывести в новый файл информацию об автомобилях,
-выпущенных ранее определенного года, отсортировав их по пробегу.
+4.	Дан файл, содержащий числа. За один просмотр файла напечатать элементы файла в следующем порядке:
+сначала все положительные числа, потом все отрицательные числа,  сохраняя исходный порядок в каждой группе чисел.
  */
 
-package osu.java.oop.lab4.collections.list;
+package osu.oop.lab4.collections;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 /**
  * Created by ekaterina on 26.02.2017.
  */
-public class ListTask implements Runnable {
-
+public class QueueTask implements Runnable {
 
     private BufferedReader br = null;
     private PrintWriter pw = null;
     private StringTokenizer stk = new StringTokenizer("");
 
     public static void main(String[] args) {
-        new Thread(new ListTask()).run();
+        new Thread(new QueueTask()).run();
     }
 
     @Override
@@ -76,30 +74,22 @@ public class ListTask implements Runnable {
         System.exit(0);
     }
 
-
     public void solver() {
-        int n = ni(), year = ni();
-        Comparator<Car> carComparator = new CarMileageComparator();
-        ArrayList<Car> cars = new ArrayList<>();
+        int n = ni();
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < n; i++) {
-            Car car = new Car(nstr(), nstr(), nstr(), ni(), ni());
-            cars.add(car);
+            int number = ni();
+            if (number >= 0) pw.print(number + " ");
+            else queue.offer(number);
         }
-        cars.sort(carComparator);
-
-        for (int i = 0; i < n; i++) {
-            if (cars.get(i).getYear() < year) {
-                pw.println(cars.get(i).toString());
-            }
+        while (!queue.isEmpty()) {
+            pw.print(queue.poll() + " ");
         }
     }
 }
 
-/* input
-5 2009
-ford Е234АВ Петров 2001 100
-kia A234АМ Иванов 2008 70
-lada Е234НВ Васин 2010 85
-opel B234НО Смирнов 2005 120
-ford K234СТ Орлов 2013 95
- */
+/*
+input
+10
+6 5 -2 6 -1 2 -7 8 9 1
+*/

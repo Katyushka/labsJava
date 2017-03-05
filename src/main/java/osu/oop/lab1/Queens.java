@@ -1,4 +1,4 @@
-package osu.java.oop.lab1;
+package osu.oop.lab1;
 
 import java.io.*;
 import java.util.StringTokenizer;
