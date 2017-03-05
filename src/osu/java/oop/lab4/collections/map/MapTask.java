@@ -6,7 +6,7 @@
 Осуществлять поиск всех записей заданного исполнителя по всему каталогу
  */
 
-package main.collections.map;
+package osu.java.oop.lab4.collections.map;
 
 import java.io.*;
 import java.util.*;
@@ -18,6 +18,8 @@ public class MapTask implements Runnable {
     private BufferedReader br = null;
     private PrintWriter pw = null;
     private StringTokenizer stk = new StringTokenizer("");
+    private HashMap<String, HashSet<Song>> catalog = new HashMap<>();
+    private HashMap<String, HashSet<String>> searchMap = new HashMap<>();
 
     public static void main(String[] args) {
         new Thread(new MapTask()).run();
@@ -80,7 +82,7 @@ public class MapTask implements Runnable {
         System.out.println("7: Search singer's records");
     }
 
-    private void addSong(HashMap<String, HashSet<Song>> catalog, HashMap<String, HashSet<String>> searchMap) {
+    private void addSong() {
         System.out.print("Enter song name and singer: ");
         Song song = new Song(nstr(), nstr());
         System.out.print("Enter disk name: ");
@@ -101,33 +103,33 @@ public class MapTask implements Runnable {
         }
     }
 
-    private void deleteSong(HashMap<String, HashSet<Song>> catalog, HashMap<String, HashSet<String>> searchMap) {
+    private void deleteSong() {
         System.out.print("Enter song name and singer: ");
         Song song = new Song(nstr(), nstr());
         // предполагается что одинаковые песни могут быть в разных дисках?
         System.out.print("Enter disk name: ");
         String diskName = nstr();
         if (catalog.containsKey(diskName)) {
-            catalog.get(diskName).removeIf(song1 ->
-                    Objects.equals(song1, song)
+            catalog.get(diskName).removeIf(songFromDisk ->
+                    Objects.equals(songFromDisk, song)
             );
         } else {
             System.out.println("Entered disk does not exist in catalog!");
         }
         if (searchMap.containsKey(song.getSinger())) {
-            searchMap.get(song.getSinger()).removeIf(song1 ->
-                    Objects.equals(song1, song.getName()));
+            searchMap.get(song.getSinger()).removeIf(songNameFromHash ->
+                    Objects.equals(songNameFromHash, song.getName()));
         }
     }
 
-    private void printCatalog(HashMap<String, HashSet<Song>> catalog) {
+    private void printCatalog() {
         catalog.forEach((disk, songs) -> {
             System.out.println("Disk : " + disk);
             printSongs(songs);
         });
     }
 
-    private void printDiskContent(HashMap<String, HashSet<Song>> catalog) {
+    private void printDiskContent() {
         System.out.print("Enter disk name : ");
         String disk = nstr();
         if (catalog.containsKey(disk)) {
@@ -144,7 +146,7 @@ public class MapTask implements Runnable {
         });
     }
 
-    private void searchRecords(HashMap<String, HashSet<String>> searchMap) {
+    private void searchRecords() {
         System.out.print("Enter singer: ");
         String singer = nstr();
         if (searchMap.containsKey(singer)) {
@@ -154,10 +156,7 @@ public class MapTask implements Runnable {
         }
     }
 
-
     private void solver() {
-        HashMap<String, HashSet<Song>> catalog = new HashMap<>();
-        HashMap<String, HashSet<String>> searchMap = new HashMap<>();
         printMenu();
         int act = ni();
         while (act != 0) {
@@ -174,19 +173,19 @@ public class MapTask implements Runnable {
                     catalog.remove(nstr());
                     break;
                 case 3:
-                    addSong(catalog, searchMap);
+                    addSong();
                     break;
                 case 4:
-                    deleteSong(catalog, searchMap);
+                    deleteSong();
                     break;
                 case 5:
-                    printCatalog(catalog);
+                    printCatalog();
                     break;
                 case 6:
-                    printDiskContent(catalog);
+                    printDiskContent();
                     break;
                 case 7:
-                    searchRecords(searchMap);
+                    searchRecords();
                     break;
             }
             printMenu();

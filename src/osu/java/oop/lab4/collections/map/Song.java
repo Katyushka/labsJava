@@ -1,8 +1,6 @@
-package main.collections.map;
+package osu.java.oop.lab4.collections.map;
 
 import org.apache.commons.lang3.builder.*;
-
-import java.util.Objects;
 
 /**
  * Created by ekaterina on 01.03.2017.

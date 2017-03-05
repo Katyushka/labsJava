@@ -1,4 +1,4 @@
-package main.oop;
+package osu.java.oop.lab2;
 
 /**
  * Created by ekaterina on 15.02.2017.

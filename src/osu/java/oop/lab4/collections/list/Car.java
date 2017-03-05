@@ -1,4 +1,4 @@
-package main.collections.list;
+package osu.java.oop.lab4.collections.list;
 
 /**
  * Created by ekaterina on 26.02.2017.

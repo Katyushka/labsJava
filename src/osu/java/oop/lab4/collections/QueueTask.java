@@ -1,23 +1,25 @@
 /*
-4.	Даны 2 строки s1 и s2. Из каждой можно читать по одному символу. Выяснить, является ли строка s2 обратной s1.
+4.	Дан файл, содержащий числа. За один просмотр файла напечатать элементы файла в следующем порядке:
+сначала все положительные числа, потом все отрицательные числа,  сохраняя исходный порядок в каждой группе чисел.
  */
 
-package main.collections;
-
+package osu.java.oop.lab4.collections;
 import java.io.*;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 /**
  * Created by ekaterina on 26.02.2017.
  */
-public class StackTask implements Runnable {
+public class QueueTask implements Runnable {
+
     private BufferedReader br = null;
     private PrintWriter pw = null;
     private StringTokenizer stk = new StringTokenizer("");
 
     public static void main(String[] args) {
-        new Thread(new StackTask()).run();
+        new Thread(new QueueTask()).run();
     }
 
     @Override
@@ -68,34 +70,26 @@ public class StackTask implements Runnable {
         return null;
     }
 
-
-    private void solver() {
-        String s1 = nstr(), s2 = nstr();
-        Stack<Character> st = new Stack();
-        if (s1.length() != s2.length()) {
-            pw.print("Strings are not reversed!");
-            pw.close();
-            exit();
-        }
-        for (int i = 0; i < s2.length(); i++) {
-            st.push(s2.charAt(i));
-        }
-        int i = 0;
-        while (i < s1.length()) {
-            //Character c = st.peek();
-            //Character c1 = s1.charAt(i);
-            if (!st.pop().equals(s1.charAt(i))) {
-                pw.print("Strings are not reversed!");
-                pw.close();
-                exit();
-            }
-            i++;
-        }
-        pw.print("Strings are reversed!");
-    }
-
-
     void exit() {
         System.exit(0);
     }
+
+    public void solver() {
+        int n = ni();
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            int number = ni();
+            if (number >= 0) pw.print(number + " ");
+            else queue.offer(number);
+        }
+        while (!queue.isEmpty()) {
+            pw.print(queue.poll() + " ");
+        }
+    }
 }
+
+/*
+input
+10
+6 5 -2 6 -1 2 -7 8 9 1
+*/

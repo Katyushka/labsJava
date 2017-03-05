@@ -4,7 +4,7 @@
 выпущенных ранее определенного года, отсортировав их по пробегу.
  */
 
-package main.collections.list;
+package osu.java.oop.lab4.collections.list;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
