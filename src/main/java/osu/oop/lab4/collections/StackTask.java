@@ -82,8 +82,6 @@ public class StackTask implements Runnable {
         }
         int i = 0;
         while (i < s1.length()) {
-            //Character c = st.peek();
-            //Character c1 = s1.charAt(i);
             if (!st.pop().equals(s1.charAt(i))) {
                 pw.print("Strings are not reversed!");
                 pw.close();

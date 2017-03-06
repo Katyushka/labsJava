@@ -78,7 +78,7 @@ public class Queens implements Runnable {
 
     // Функция выводит найденное решение на экран
     private void print() {
-        pw.println("---перестановка " + (++solutionNumber) + "---");
+        pw.println("---permutation " + (++solutionNumber) + "---");
         pw.print(" ");
         for (int i = 0; i < n; i++)
             pw.print("___");
@@ -87,7 +87,7 @@ public class Queens implements Runnable {
         for (int i = 0; i < n; i++) {
             pw.print((n - i) + "|");
             for (int j = 0; j < n; j++) {
-                pw.print((solution[i] == j) ? " Ф " : " . ");
+                pw.print((solution[i] == j) ? " F " : " . ");
             }
             pw.print("|");
             pw.println();

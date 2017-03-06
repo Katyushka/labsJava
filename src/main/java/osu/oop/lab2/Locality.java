@@ -3,10 +3,9 @@ package osu.oop.lab2;
 /**
  * Created by ekaterina on 15.02.2017.
  */
-public class Locality implements Comparable{
+public class Locality implements Comparable {
     private int population;
     private double area;
-    private double density;
 
 
     public Locality(int population, double area) {
@@ -23,7 +22,6 @@ public class Locality implements Comparable{
     }
 
 
-
     public double getArea() {
         return area;
     }
@@ -33,7 +31,13 @@ public class Locality implements Comparable{
     }
 
     public double calculateDensity() {
-        return this.population / this.area;
+        double density = 0;
+        try {
+            density = this.population / this.area;
+        } catch (ArithmeticException e) {
+            System.out.println("caught " + e);
+        }
+        return density;
     }
 
     public Status calculateStatus(int population) {
@@ -49,20 +53,12 @@ public class Locality implements Comparable{
         else return Status.SMALL_RURAL_SETTLEMENT;
     }
 
-    public double getDensity() {
-        return density;
-    }
-
-    public void setDensity(double density) {
-        this.density = density;
-    }
-
     @Override
     public int compareTo(Object o) {
-        Locality locality = (Locality)o;
-        if (this.population < locality.population){
+        Locality locality = (Locality) o;
+        if (this.population < locality.population) {
             return -1;
-        } else if (this.population > locality.population){
+        } else if (this.population > locality.population) {
             return 1;
         }
         return 0;

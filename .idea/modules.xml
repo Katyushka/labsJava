@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/labsJava.iml" filepath="$PROJECT_DIR$/.idea/modules/labsJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/labsJava_main.iml" filepath="$PROJECT_DIR$/.idea/modules/labsJava_main.iml" group="labsJava" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/labsJava_test.iml" filepath="$PROJECT_DIR$/.idea/modules/labsJava_test.iml" group="labsJava" />
+    </modules>
+  </component>
+</project>
