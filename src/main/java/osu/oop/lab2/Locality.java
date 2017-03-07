@@ -1,17 +1,22 @@
 package osu.oop.lab2;
 
+import java.util.ArrayList;
+
 /**
  * Created by ekaterina on 15.02.2017.
  */
-public class Locality implements Comparable {
+public class Locality implements Comparable, Printable {
+    private String name;
     private int population;
     private double area;
+    private double density;
 
-
-    public Locality(int population, double area) {
+    public Locality(String name, int population, double area) {
+        this.name = name;
         this.population = population;
         this.area = area;
     }
+
 
     public int getPopulation() {
         return population;
@@ -28,6 +33,22 @@ public class Locality implements Comparable {
 
     public void setArea(double area) {
         this.area = area;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getDensity() {
+        return density;
+    }
+
+    public void setDensity(double density) {
+        this.density = density;
     }
 
     public double calculateDensity() {
@@ -63,4 +84,10 @@ public class Locality implements Comparable {
         }
         return 0;
     }
+
+    @Override
+    public void print() {
+        System.out.println("name = " + this.getName() + ": population = " + this.getPopulation()+ ", area = " + this.getArea() + ", density = "+ calculateDensity());
+    }
+
 }

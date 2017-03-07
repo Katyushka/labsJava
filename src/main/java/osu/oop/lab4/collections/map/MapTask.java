@@ -106,7 +106,7 @@ public class MapTask implements Runnable {
     private void deleteSong() {
         System.out.print("Enter song name and singer: ");
         Song song = new Song(nstr(), nstr());
-        // предполагается что одинаковые песни могут быть в разных дисках?
+        // предполагается что одинаковые песни могут быть в разных дисках
         System.out.print("Enter disk name: ");
         String diskName = nstr();
         if (catalog.containsKey(diskName)) {

@@ -7,10 +7,9 @@ public class City extends Locality {
 
     private int universities;
 
-    public City(int population, double area) {
-        super(population, area);
+    public City(String name, int population, double area) {
+        super(name, population, area);
     }
-
 
     public int getUniversities() {
         return universities;
@@ -19,4 +18,5 @@ public class City extends Locality {
     public void setUniversities(int universities) {
         this.universities = universities;
     }
+
 }
