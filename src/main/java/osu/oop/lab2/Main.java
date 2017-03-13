@@ -1,3 +1,9 @@
+/*
+1.	В разработанных на предыдущей лабораторной работе классах организовать наследование интерфейса Comparable. Создать массив, содержащий объекты всех разработанных классов, и осуществить его сортировку с помощью встроенного метода Sort.
+2.	Описать произвольный интерфейс, содержащий 2-3 метода и организовать его наследование.
+3.	Добавить в методы разработанных классов обработку исключительных ситуаций.
+ */
+
 package osu.oop.lab2;
 
 import javax.validation.Validator;
@@ -80,8 +86,6 @@ public class Main implements Runnable{
         City city = new City("City", 1000, 500);
         city.setUniversities(5);
         city.print();
-        city.setUniversities(5);
-        System.out.println("universities = " + city.getUniversities());
 
         Village village = new Village("Village", 100, 2000);
         village.print();

@@ -19,4 +19,10 @@ public class City extends Locality {
         this.universities = universities;
     }
 
+
+    @Override
+    public void print() {
+        System.out.println("name = " + this.getName() + ": population = " + this.getPopulation()+ ", area = " + this.getArea() + ", density = "+ calculateDensity() + ", universities = "+ this.universities);
+    }
+
 }
