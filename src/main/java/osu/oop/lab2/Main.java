@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 /**
  * Created by ekaterina on 28.02.2017.
  */
-public class Main implements Runnable{
+public class Main implements Runnable {
 
     private BufferedReader br = null;
     private PrintWriter pw = null;
@@ -71,7 +71,7 @@ public class Main implements Runnable{
         return null;
     }
 
-    public void solver(){
+    public void solver() {
         Locality locality = new Locality("Locality", 800, 200);
         locality.print();
 

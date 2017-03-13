@@ -89,8 +89,18 @@ public class MapTask implements Runnable {
         Song song = new Song(nstr(), nstr());
         System.out.print("Enter disk name: ");
         String diskName = nstr();
-        catalog.merge(diskName, new HashSet<Song>(){{add(song);}}, (oldSongs, newSong)->{oldSongs.addAll(newSong); return oldSongs;});
-        searchMap.merge(song.getSinger(), new HashSet<String>(){{add(song.getName());}}, (oldSongs, newSong)->{oldSongs.addAll(newSong); return oldSongs;} );
+        catalog.merge(diskName, new HashSet<Song>() {{
+            add(song);
+        }}, (oldSongs, newSong) -> {
+            oldSongs.addAll(newSong);
+            return oldSongs;
+        });
+        searchMap.merge(song.getSinger(), new HashSet<String>() {{
+            add(song.getName());
+        }}, (oldSongs, newSong) -> {
+            oldSongs.addAll(newSong);
+            return oldSongs;
+        });
 
     }
 

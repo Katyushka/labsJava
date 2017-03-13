@@ -55,25 +55,25 @@ task runLab1Task(type: JavaExec) {
 
 task runLab4ListTask(type: JavaExec){
     println 'start CarList task'
-    main = 'osu.oop.lab4.collection.list.ListTask'
+    main = 'osu.oop.lab4.collections.list.ListTask'
     classpath = sourceSets.main.runtimeClasspath
 }
 
 task runLab4MapTask(type: JavaExec){
     println 'start SongMap task'
-    main = 'osu.oop.lab4.collection.map.MapTask'
+    main = 'osu.oop.lab4.collections.map.MapTask'
     classpath = sourceSets.main.runtimeClasspath
 }
 
 task runLab4QueueTask(type: JavaExec){
     println 'start Queue task'
-    main = 'osu.oop.lab4.collection.QueueTask'
+    main = 'osu.oop.lab4.collections.QueueTask'
     classpath = sourceSets.main.runtimeClasspath
 }
 
 task runLab4StackTask(type: JavaExec){
     println 'start Stack task'
-    main = 'osu.oop.lab4.collection.SrtackTask'
+    main = 'osu.oop.lab4.collections.SrtackTask'
     classpath = sourceSets.main.runtimeClasspath
 }
 
@@ -84,4 +84,5 @@ configure([runLab1Task, runLab4ListTask, runLab4MapTask, runLab4QueueTask, runLa
 
 springBoot {
     mainClass = "osu.oop.lab1.Queens"
+   // mainClass = 'osu.oop.lab4.collections.map.MapTask'
 }
