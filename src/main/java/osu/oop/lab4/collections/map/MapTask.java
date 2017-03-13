@@ -10,6 +10,8 @@ package osu.oop.lab4.collections.map;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by ekaterina on 01.03.2017.
@@ -87,20 +89,9 @@ public class MapTask implements Runnable {
         Song song = new Song(nstr(), nstr());
         System.out.print("Enter disk name: ");
         String diskName = nstr();
-        if (catalog.containsKey(diskName)) {
-            catalog.get(diskName).add(song);
-        } else {
-            catalog.put(diskName, new HashSet<Song>() {{
-                add(song);
-            }});
-        }
-        if (searchMap.containsKey(song.getSinger())) {
-            searchMap.get(song.getSinger()).add(song.getName());
-        } else {
-            searchMap.put(song.getSinger(), new HashSet<String>() {{
-                add(song.getName());
-            }});
-        }
+        catalog.merge(diskName, new HashSet<Song>(){{add(song);}}, (oldSongs, newSong)->{oldSongs.addAll(newSong); return oldSongs;});
+        searchMap.merge(song.getSinger(), new HashSet<String>(){{add(song.getName());}}, (oldSongs, newSong)->{oldSongs.addAll(newSong); return oldSongs;} );
+
     }
 
     private void deleteSong() {
