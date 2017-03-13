@@ -3,6 +3,7 @@ package osu.oop.lab2;
 /**
  * Created by ekaterina on 15.02.2017.
  */
+
 public class City extends Locality {
 
     private int universities;
@@ -19,10 +20,14 @@ public class City extends Locality {
         this.universities = universities;
     }
 
-
     @Override
     public void print() {
-        System.out.println("name = " + this.getName() + ": population = " + this.getPopulation()+ ", area = " + this.getArea() + ", density = "+ calculateDensity() + ", universities = "+ this.universities);
+        System.out.println(new PrintBuilder()
+                .addField("name", getName())
+                .addField("population", getPopulation())
+                .addField("area", getArea())
+                .addField("density", getDensity())
+                .addField("universities", getUniversities()).build());
     }
 
 }

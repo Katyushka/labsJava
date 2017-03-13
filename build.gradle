@@ -77,7 +77,7 @@ task runLab4StackTask(type: JavaExec){
     classpath = sourceSets.main.runtimeClasspath
 }
 
-configure(runLab1Task) {
+configure([runLab1Task, runLab4ListTask, runLab4MapTask, runLab4QueueTask, runLab4StackTask]) {
     group = 'OOP Labs'
     description = 'Object Oriented programming labs executors'
 }

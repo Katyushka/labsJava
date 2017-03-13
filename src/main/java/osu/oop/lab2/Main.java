@@ -6,11 +6,9 @@
 
 package osu.oop.lab2;
 
-import javax.validation.Validator;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.StringTokenizer;
 
 /**
@@ -73,8 +71,6 @@ public class Main implements Runnable{
         return null;
     }
 
-
-
     public void solver(){
         Locality locality = new Locality("Locality", 800, 200);
         locality.print();
@@ -98,11 +94,7 @@ public class Main implements Runnable{
         localities.add(village);
         localities.add(localityCity);
         Collections.sort(localities);
-
-
-        localities.forEach(locality1 -> locality1.print());
-
-
+        localities.forEach(Locality::print);
     }
 
 }

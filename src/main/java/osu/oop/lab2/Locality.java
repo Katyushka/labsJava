@@ -1,10 +1,9 @@
 package osu.oop.lab2;
 
-import java.util.ArrayList;
-
 /**
  * Created by ekaterina on 15.02.2017.
  */
+
 public class Locality implements Comparable, Printable {
     private String name;
     private int population;
@@ -12,26 +11,37 @@ public class Locality implements Comparable, Printable {
     private double density;
 
     public Locality(String name, int population, double area) {
+        // Guard Clauses
+        if (population < 0) {
+            throw new IllegalArgumentException("Population should be positive or 0");
+        }
+        if (area <= 0) {
+            throw new IllegalArgumentException("Area should be positive or 0");
+        }
         this.name = name;
         this.population = population;
         this.area = area;
     }
-
 
     public int getPopulation() {
         return population;
     }
 
     public void setPopulation(int population) {
+        if (population < 0) {
+            throw new IllegalArgumentException("Population should be positive or 0");
+        }
         this.population = population;
     }
-
 
     public double getArea() {
         return area;
     }
 
     public void setArea(double area) {
+        if (area <= 0) {
+            throw new IllegalArgumentException("Area should be positive or 0");
+        }
         this.area = area;
     }
 
@@ -87,7 +97,11 @@ public class Locality implements Comparable, Printable {
 
     @Override
     public void print() {
-        System.out.println("name = " + this.getName() + ": population = " + this.getPopulation()+ ", area = " + this.getArea() + ", density = "+ calculateDensity());
+        System.out.println(new PrintBuilder()
+                .addField("name", getName())
+                .addField("population", getPopulation())
+                .addField("area", getArea())
+                .addField("density", getDensity()).build());
     }
 
 }
